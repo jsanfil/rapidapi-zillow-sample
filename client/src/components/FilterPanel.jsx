@@ -28,6 +28,50 @@ const BATHROOM_OPTIONS = [
     { value: '4', label: '4+' }
 ]
 
+const PRICE_MIN_OPTIONS = [
+    { value: '', label: 'Any' },
+    { value: '100000', label: '$100,000' },
+    { value: '200000', label: '$200,000' },
+    { value: '300000', label: '$300,000' },
+    { value: '400000', label: '$400,000' },
+    { value: '500000', label: '$500,000' },
+    { value: '600000', label: '$600,000' },
+    { value: '700000', label: '$700,000' },
+    { value: '800000', label: '$800,000' },
+    { value: '900000', label: '$900,000' },
+    { value: '1000000', label: '$1,000,000' },
+    { value: '1250000', label: '$1,250,000' },
+    { value: '1500000', label: '$1,500,000' },
+    { value: '1750000', label: '$1,750,000' },
+    { value: '2000000', label: '$2,000,000' },
+    { value: '2500000', label: '$2,500,000' },
+    { value: '3000000', label: '$3,000,000' },
+    { value: '4000000', label: '$4,000,000' },
+    { value: '5000000', label: '$5,000,000+' }
+]
+
+const PRICE_MAX_OPTIONS = [
+    { value: '', label: 'Any' },
+    { value: '200000', label: '$200,000' },
+    { value: '250000', label: '$250,000' },
+    { value: '300000', label: '$300,000' },
+    { value: '400000', label: '$400,000' },
+    { value: '500000', label: '$500,000' },
+    { value: '600000', label: '$600,000' },
+    { value: '700000', label: '$700,000' },
+    { value: '800000', label: '$800,000' },
+    { value: '900000', label: '$900,000' },
+    { value: '1000000', label: '$1,000,000' },
+    { value: '1250000', label: '$1,250,000' },
+    { value: '1500000', label: '$1,500,000' },
+    { value: '1750000', label: '$1,750,000' },
+    { value: '2000000', label: '$2,000,000' },
+    { value: '2500000', label: '$2,500,000' },
+    { value: '3000000', label: '$3,000,000' },
+    { value: '4000000', label: '$4,000,000' },
+    { value: '5000000', label: '$5,000,000+' }
+]
+
 const SORT_OPTIONS = [
     { value: 'price_desc', label: 'Price: High to Low' },
     { value: 'price_asc', label: 'Price: Low to High' },
@@ -94,11 +138,9 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     }}>
                         Min Price
                     </label>
-                    <input
-                        type="number"
+                    <select
                         value={filters.minPrice || ''}
                         onChange={(e) => updateFilter('minPrice', e.target.value)}
-                        placeholder="No min"
                         style={{
                             width: '100%',
                             padding: '8px 12px',
@@ -108,7 +150,11 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             backgroundColor: 'white',
                             color: '#333'
                         }}
-                    />
+                    >
+                        {PRICE_MIN_OPTIONS.map(option => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>
@@ -121,11 +167,9 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     }}>
                         Max Price
                     </label>
-                    <input
-                        type="number"
+                    <select
                         value={filters.maxPrice || ''}
                         onChange={(e) => updateFilter('maxPrice', e.target.value)}
-                        placeholder="No max"
                         style={{
                             width: '100%',
                             padding: '8px 12px',
@@ -135,7 +179,11 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             backgroundColor: 'white',
                             color: '#333'
                         }}
-                    />
+                    >
+                        {PRICE_MAX_OPTIONS.map(option => (
+                            <option key={option.value} value={option.value}>{option.label}</option>
+                        ))}
+                    </select>
                 </div>
 
                 <div>

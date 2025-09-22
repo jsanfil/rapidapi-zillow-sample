@@ -1,6 +1,56 @@
 import PropertyCard from './PropertyCard'
 
-export default function PropertyGrid({ properties, loading }) {
+const formatFilterLabel = (key, value) => {
+    const labels = {
+        location: 'Location',
+        minPrice: 'Min Price',
+        maxPrice: 'Max Price',
+        propertyType: 'Property Type',
+        bedrooms: 'Bedrooms',
+        bathrooms: 'Bathrooms',
+        minSqft: 'Min SqFt',
+        maxSqft: 'Max SqFt',
+        sortBy: 'Sort By'
+    }
+
+    const label = labels[key] || key
+
+    if (value === '' || value === null || value === undefined) return null
+
+    // Format value
+    if (key === 'minPrice' || key === 'maxPrice') {
+        return `${label}: $${value.toLocaleString()}`
+    }
+    if (key === 'minSqft' || key === 'maxSqft') {
+        return `${label}: ${value} SqFt`
+    }
+    if (key === 'bedrooms' || key === 'bathrooms') {
+        return `${label}: ${value}+`
+    }
+    if (key === 'propertyType') {
+        const typeLabels = {
+            SINGLE_FAMILY: 'Single Family',
+            CONDO: 'Condo',
+            TOWNHOUSE: 'Townhouse',
+            MULTI_FAMILY: 'Multi Family',
+            LAND: 'Land'
+        }
+        return `${label}: ${typeLabels[value] || value}`
+    }
+    if (key === 'sortBy') {
+        const sortLabels = {
+            price_desc: 'Price: High to Low',
+            price_asc: 'Price: Low to High',
+            sqft_desc: 'SqFt: High to Low',
+            sqft_asc: 'SqFt: Low to High',
+            date_desc: 'Newest First'
+        }
+        return `${label}: ${sortLabels[value] || value}`
+    }
+    return `${label}: ${value}`
+}
+
+export default function PropertyGrid({ properties, loading, filters }) {
     if (loading) {
         return (
             <div style={{
@@ -97,6 +147,40 @@ export default function PropertyGrid({ properties, loading }) {
 
     return (
         <div>
+            {/* Active Filters */}
+            <div style={{ marginBottom: '20px' }}>
+                <h3 style={{
+                    color: '#6D98A5',
+                    fontSize: '16px',
+                    fontWeight: '500',
+                    marginBottom: '8px',
+                    fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
+                }}>
+                    Active Filters:
+                </h3>
+                <div style={{
+                    display: 'flex',
+                    flexWrap: 'wrap',
+                    gap: '8px'
+                }}>
+                    {Object.entries(filters).map(([key, value]) => {
+                        const formatted = formatFilterLabel(key, value)
+                        return formatted ? (
+                            <span key={key} style={{
+                                background: '#BFD3CE',
+                                color: '#6D98A5',
+                                padding: '4px 8px',
+                                borderRadius: '4px',
+                                fontSize: '12px',
+                                fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
+                            }}>
+                                {formatted}
+                            </span>
+                        ) : null
+                    })}
+                </div>
+            </div>
+
             {/* Results Count */}
             <div style={{
                 marginBottom: '20px',

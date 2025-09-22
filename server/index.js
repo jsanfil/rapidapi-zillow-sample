@@ -24,49 +24,29 @@ app.get("/api/search", async (req, res) => {
   } = req.query;
 
   try {
-    const base = `https://${RAPIDAPI_HOST}${ZILLOW_SEARCH_PATH}`;
+    const base = `https://${RAPIDAPI_HOST}/propertyExtendedSearch`;
     const url = new URL(base);
     url.searchParams.set("location", location);
 
     // Price filters
-    if (minPrice) url.searchParams.set("price_min", String(minPrice));
-    if (maxPrice) url.searchParams.set("price_max", String(maxPrice));
+    if (minPrice) url.searchParams.set("minPrice", String(minPrice));
+    if (maxPrice) url.searchParams.set("maxPrice", String(maxPrice));
 
     // Property type filter
-    if (propertyType) url.searchParams.set("property_type", propertyType);
+    if (propertyType) url.searchParams.set("home_type", propertyType);
 
     // Bedroom filter (minimum bedrooms)
-    if (bedrooms) url.searchParams.set("beds_min", String(bedrooms));
+    if (bedrooms) url.searchParams.set("bedsMin", String(bedrooms));
 
     // Bathroom filter (minimum bathrooms)
-    if (bathrooms) url.searchParams.set("baths_min", String(bathrooms));
+    if (bathrooms) url.searchParams.set("bathsMin", String(bathrooms));
 
     // Square footage filters
-    if (minSqft) url.searchParams.set("sqft_min", String(minSqft));
-    if (maxSqft) url.searchParams.set("sqft_max", String(maxSqft));
+    if (minSqft) url.searchParams.set("sqftMin", String(minSqft));
+    if (maxSqft) url.searchParams.set("sqftMax", String(maxSqft));
 
     // Sort options
-    if (sortBy) {
-      switch (sortBy) {
-        case 'price_desc':
-          url.searchParams.set("sort", "price_desc");
-          break;
-        case 'price_asc':
-          url.searchParams.set("sort", "price_asc");
-          break;
-        case 'sqft_desc':
-          url.searchParams.set("sort", "sqft_desc");
-          break;
-        case 'sqft_asc':
-          url.searchParams.set("sort", "sqft_asc");
-          break;
-        case 'date_desc':
-          url.searchParams.set("sort", "date_desc");
-          break;
-        default:
-          url.searchParams.set("sort", "price_desc");
-      }
-    }
+    if (sortBy) url.searchParams.set("sort", sortBy);
 
     console.log('Request URL:', url.toString());
 

@@ -28,6 +28,7 @@ export default function App() {
         if (value !== '' && value !== null && value !== undefined) {
           // Map client filter names to server parameter names
           const paramMap = {
+            location: 'location',
             minPrice: 'minPrice',
             maxPrice: 'maxPrice',
             propertyType: 'propertyType',
@@ -35,8 +36,7 @@ export default function App() {
             bathrooms: 'bathrooms',
             minSqft: 'minSqft',
             maxSqft: 'maxSqft',
-            sortBy: 'sortBy',
-            location: 'location'
+            sortBy: 'sortBy'
           }
           const paramName = paramMap[key] || key
           queryParams.set(paramName, value)
@@ -91,6 +91,7 @@ export default function App() {
         <PropertyGrid
           properties={properties}
           loading={loading}
+          filters={filters}
         />
       </div>
     </div>
