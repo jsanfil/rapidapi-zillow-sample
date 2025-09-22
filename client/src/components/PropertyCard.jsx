@@ -69,7 +69,7 @@ export default function PropertyCard({ property }) {
 
                 {/* Button */}
                 <button
-                    className="w-full px-4 py-2 border border-blue-teal bg-transparent text-blue-teal rounded-md text-sm font-medium cursor-pointer transition-all duration-200 mt-1 hover:bg-terracotta/30"
+                    className="w-full px-4 py-2 border border-blue-teal bg-transparent text-blue-teal rounded-md text-sm font-medium cursor-pointer transition-all duration-200 mt-1 hover:bg-warm-coral/30"
                     onClick={(e) => {
                         e.stopPropagation()
                         property.permalink && window.open(property.permalink, '_blank')

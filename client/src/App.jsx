@@ -51,7 +51,7 @@ export default function App() {
 
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-semibold text-blue-teal mb-5 tracking-tight">
-          New Home Search
+          Coastal Keys
         </h1>
 
         <FilterPanel

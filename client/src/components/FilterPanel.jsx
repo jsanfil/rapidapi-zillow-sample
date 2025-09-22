@@ -100,7 +100,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         value={filters.location || ''}
                         onChange={(e) => updateFilter('location', e.target.value)}
                         placeholder="City, State or ZIP"
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     />
                 </div>
 
@@ -111,7 +111,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.minPrice || ''}
                         onChange={(e) => updateFilter('minPrice', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {PRICE_MIN_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -126,7 +126,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.maxPrice || ''}
                         onChange={(e) => updateFilter('maxPrice', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {PRICE_MAX_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -141,7 +141,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.home_type || ''}
                         onChange={(e) => updateFilter('home_type', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {PROPERTY_TYPES.map(type => (
                             <option key={type.value} value={type.value}>{type.label}</option>
@@ -156,7 +156,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.bedsMin || ''}
                         onChange={(e) => updateFilter('bedsMin', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {BEDROOM_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -171,7 +171,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.bathsMin || ''}
                         onChange={(e) => updateFilter('bathsMin', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {BATHROOM_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -191,7 +191,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             updateFilter('sqftMin', value)
                         }}
                         placeholder="No min"
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     />
                 </div>
 
@@ -207,7 +207,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             updateFilter('sqftMax', value)
                         }}
                         placeholder="No max"
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     />
                 </div>
 
@@ -218,7 +218,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                     <select
                         value={filters.sort || 'Price_High_Low'}
                         onChange={(e) => updateFilter('sort', e.target.value)}
-                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-warm-coral"
                     >
                         {SORT_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -231,7 +231,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 <button
                     onClick={onSearch}
                     disabled={loading}
-                    className="bg-blue-teal text-white px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer hover:bg-teal-border transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="bg-blue-teal text-white px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer hover:bg-warm-coral transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {loading ? 'Searching...' : 'Search'}
                 </button>

@@ -1,5 +1,24 @@
 @import "tailwindcss";
 
+@theme {
+    --color-warm-beige: #E4DDD7;
+    --color-sage-green: #BFD3CE;
+    --color-teal-border: #91B7BE;
+    --color-blue-teal: #6D98A5;
+    --color-warm-coral: #D9A391;
+    --color-terracotta: #CC7357;
+    --color-terracotta-50: #fef2f0;
+    --color-terracotta-100: #fde3de;
+    --color-terracotta-200: #fbcdc6;
+    --color-terracotta-300: #f7a99a;
+    --color-terracotta-400: #f17c6b;
+    --color-terracotta-500: #e55c4a;
+    --color-terracotta-600: #d13f2c;
+    --color-terracotta-700: #b02f20;
+    --color-terracotta-800: #8f2719;
+    --color-terracotta-900: #762017;
+}
+
 /* Global Styles */
 * {
     box-sizing: border-box;
@@ -9,7 +28,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-    background: linear-gradient(135deg, #F5F5DC 0%, #FAF0E6 50%, #F0E68C 100%);
+    background: #E4DDD7;
     min-height: 100vh;
 }
 
@@ -48,14 +67,14 @@ body {
 input:focus,
 select:focus {
     outline: none;
-    border-color: #CC7357 !important;
-    box-shadow: 0 0 0 3px rgba(204, 115, 87, 0.1) !important;
+    border-color: var(--color-warm-coral) !important;
+    box-shadow: 0 0 0 3px rgb(217 163 145 / 0.1) !important;
 }
 
 /* Button Hover */
 .search-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(204, 115, 87, 0.4);
+    box-shadow: 0 6px 20px rgb(217 163 145 / 0.4);
 }
 
 /* Scrollbar Styling */
@@ -64,7 +83,7 @@ select:focus {
 }
 
 ::-webkit-scrollbar-track {
-    background: #F5F5DC;
+    background: #E4DDD7;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -73,5 +92,5 @@ select:focus {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #8B4513;
+    background: #762017;
 }
