@@ -42,29 +42,15 @@ export default function App() {
   }
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      background: '#E4DDD7',
-      fontFamily: "'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
-      padding: '20px'
-    }}>
+    <div className="min-h-screen bg-warm-beige font-['Poppins'] p-5">
       {/* Google Fonts Link */}
       <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
       />
 
-      <div style={{
-        maxWidth: '1400px',
-        margin: '0 auto'
-      }}>
-        <h1 style={{
-          fontSize: '2rem',
-          fontWeight: '600',
-          color: '#6D98A5',
-          marginBottom: '20px',
-          letterSpacing: '-0.025em'
-        }}>
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-3xl font-semibold text-blue-teal mb-5 tracking-tight">
           New Home Search
         </h1>
 

@@ -56,73 +56,19 @@ const formatFilterLabel = (key, value) => {
 export default function PropertyGrid({ properties, loading, filters }) {
     if (loading) {
         return (
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '24px',
-                padding: '20px 0'
-            }}>
+            <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 md:gap-6 py-5">
                 {/* Loading Skeletons */}
                 {Array.from({ length: 6 }).map((_, index) => (
-                    <div key={index} style={{
-                        background: '#BFD3CE',
-                        border: '1px solid #91B7BE',
-                        borderRadius: '16px',
-                        boxShadow: '0 12px 32px rgba(0,0,0,0.06), 0 4px 12px rgba(0,0,0,0.04)',
-                        overflow: 'hidden',
-                        animation: 'pulse 1.5s ease-in-out infinite'
-                    }}>
-                        <div style={{
-                            width: '100%',
-                            height: '192px',
-                            background: '#F0F0F0',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center'
-                        }}>
-                            <div style={{
-                                width: '60px',
-                                height: '60px',
-                                background: '#E0E0E0',
-                                borderRadius: '8px'
-                            }}></div>
+                    <div key={index} className="bg-sage-green border border-teal-border rounded-2xl shadow-lg overflow-hidden animate-pulse">
+                        <div className="w-full h-48 bg-gray-200 flex items-center justify-center">
+                            <div className="w-15 h-15 bg-gray-300 rounded-lg"></div>
                         </div>
-                        <div style={{
-                            padding: '20px',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: '12px'
-                        }}>
-                            <div style={{
-                                height: '11px',
-                                background: '#F0F0F0',
-                                borderRadius: '4px',
-                                width: '40%'
-                            }}></div>
-                            <div style={{
-                                height: '18px',
-                                background: '#F0F0F0',
-                                borderRadius: '4px',
-                                width: '80%'
-                            }}></div>
-                            <div style={{
-                                height: '16px',
-                                background: '#F0F0F0',
-                                borderRadius: '4px',
-                                width: '60%'
-                            }}></div>
-                            <div style={{
-                                height: '14px',
-                                background: '#F0F0F0',
-                                borderRadius: '4px',
-                                width: '70%'
-                            }}></div>
-                            <div style={{
-                                height: '32px',
-                                background: '#F0F0F0',
-                                borderRadius: '6px',
-                                width: '100%'
-                            }}></div>
+                        <div className="p-5 flex flex-col gap-3">
+                            <div className="h-2.5 bg-gray-200 rounded w-2/5"></div>
+                            <div className="h-4.5 bg-gray-200 rounded w-4/5"></div>
+                            <div className="h-4 bg-gray-200 rounded w-3/5"></div>
+                            <div className="h-3.5 bg-gray-200 rounded w-7/10"></div>
+                            <div className="h-8 bg-gray-200 rounded w-full"></div>
                         </div>
                     </div>
                 ))}
@@ -132,16 +78,10 @@ export default function PropertyGrid({ properties, loading, filters }) {
 
     if (!properties || properties.length === 0) {
         return (
-            <div style={{
-                textAlign: 'center',
-                padding: '60px 20px',
-                color: '#6D98A5',
-                fontSize: '18px',
-                fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
-            }}>
-                <div style={{ fontSize: '64px', marginBottom: '20px' }}>🏠</div>
+            <div className="text-center py-15 px-5 text-blue-teal text-lg">
+                <div className="text-6xl mb-5">🏠</div>
                 <div>No properties found matching your criteria.</div>
-                <div style={{ fontSize: '14px', marginTop: '8px', color: '#91B7BE' }}>
+                <div className="text-sm mt-2 text-teal-border">
                     Try adjusting your search filters to see more results.
                 </div>
             </div>
@@ -151,32 +91,15 @@ export default function PropertyGrid({ properties, loading, filters }) {
     return (
         <div>
             {/* Active Filters */}
-            <div style={{ marginBottom: '20px' }}>
-                <h3 style={{
-                    color: '#6D98A5',
-                    fontSize: '16px',
-                    fontWeight: '500',
-                    marginBottom: '8px',
-                    fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
-                }}>
+            <div className="mb-5">
+                <h3 className="text-blue-teal text-base font-medium mb-2">
                     Active Filters:
                 </h3>
-                <div style={{
-                    display: 'flex',
-                    flexWrap: 'wrap',
-                    gap: '8px'
-                }}>
+                <div className="flex flex-wrap gap-2">
                     {Object.entries(filters).map(([key, value]) => {
                         const formatted = formatFilterLabel(key, value)
                         return formatted ? (
-                            <span key={key} style={{
-                                background: '#BFD3CE',
-                                color: '#6D98A5',
-                                padding: '4px 8px',
-                                borderRadius: '4px',
-                                fontSize: '12px',
-                                fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
-                            }}>
+                            <span key={key} className="bg-sage-green text-blue-teal px-2 py-1 rounded text-xs">
                                 {formatted}
                             </span>
                         ) : null
@@ -185,23 +108,12 @@ export default function PropertyGrid({ properties, loading, filters }) {
             </div>
 
             {/* Results Count */}
-            <div style={{
-                marginBottom: '20px',
-                color: '#6D98A5',
-                fontSize: '16px',
-                fontWeight: '500',
-                fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
-            }}>
+            <div className="mb-5 text-blue-teal text-base font-medium">
                 Found {properties.length} propert{properties.length === 1 ? 'y' : 'ies'}
             </div>
 
             {/* Property Grid */}
-            <div className="property-grid" style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-                gap: '24px',
-                padding: '20px 0'
-            }}>
+            <div className="grid grid-cols-1 md:grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-4 md:gap-6 py-5">
                 {properties.map(property => (
                     <PropertyCard key={property.id} property={property} />
                 ))}
@@ -209,17 +121,3 @@ export default function PropertyGrid({ properties, loading, filters }) {
         </div>
     )
 }
-
-// Add CSS animation for loading skeletons
-const style = document.createElement('style')
-style.textContent = `
-    @keyframes pulse {
-        0%, 100% {
-            opacity: 1;
-        }
-        50% {
-            opacity: 0.5;
-        }
-    }
-`
-document.head.appendChild(style)

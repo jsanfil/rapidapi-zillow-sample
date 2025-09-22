@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Global Styles */
 * {
     box-sizing: border-box;
@@ -22,24 +24,9 @@ body {
         gap: 12px !important;
     }
 
-    .property-card {
-        flex-direction: column !important;
-        height: auto !important;
-    }
 
-    .property-image {
-        flex: 0 0 200px !important;
-        width: 100% !important;
-    }
 
-    .property-details {
-        padding: 16px !important;
-    }
 
-    .property-grid {
-        grid-template-columns: 1fr !important;
-        gap: 16px !important;
-    }
 
     .search-button {
         width: 100% !important;
@@ -52,42 +39,10 @@ body {
         font-size: 24px !important;
     }
 
-    .property-details h3 {
-        font-size: 16px !important;
-    }
 
-    .property-features {
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-    }
-
-    .property-feature {
-        font-size: 13px !important;
-    }
 }
 
-/* Loading Animation */
-@keyframes pulse {
 
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-}
-
-.loading-skeleton {
-    animation: pulse 1.5s ease-in-out infinite;
-}
-
-/* Hover Effects */
-.property-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-}
 
 /* Focus States */
 input:focus,

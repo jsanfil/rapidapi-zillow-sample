@@ -89,29 +89,10 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
     }
 
     return (
-        <div style={{
-            background: '#BFD3CE',
-            border: '1px solid #91B7BE',
-            borderRadius: '16px',
-            padding: '16px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-            marginBottom: '24px',
-            fontFamily: "'Poppins', system-ui, -apple-system, sans-serif"
-        }}>
-            <div style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '16px',
-                marginBottom: '16px'
-            }}>
+        <div className="bg-sage-green border border-teal-border rounded-2xl p-4 shadow-lg mb-6 font-['Poppins']">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-4 mb-4">
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Location
                     </label>
                     <input
@@ -119,40 +100,18 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         value={filters.location || ''}
                         onChange={(e) => updateFilter('location', e.target.value)}
                         placeholder="City, State or ZIP"
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     />
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Min Price
                     </label>
                     <select
                         value={filters.minPrice || ''}
                         onChange={(e) => updateFilter('minPrice', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {PRICE_MIN_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -161,27 +120,13 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Max Price
                     </label>
                     <select
                         value={filters.maxPrice || ''}
                         onChange={(e) => updateFilter('maxPrice', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {PRICE_MAX_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -190,27 +135,13 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Property Type
                     </label>
                     <select
                         value={filters.home_type || ''}
                         onChange={(e) => updateFilter('home_type', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {PROPERTY_TYPES.map(type => (
                             <option key={type.value} value={type.value}>{type.label}</option>
@@ -219,27 +150,13 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Bedrooms
                     </label>
                     <select
                         value={filters.bedsMin || ''}
                         onChange={(e) => updateFilter('bedsMin', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {BEDROOM_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -248,27 +165,13 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Bathrooms
                     </label>
                     <select
                         value={filters.bathsMin || ''}
                         onChange={(e) => updateFilter('bathsMin', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {BATHROOM_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -277,13 +180,7 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Min SqFt
                     </label>
                     <input
@@ -294,26 +191,12 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             updateFilter('sqftMin', value)
                         }}
                         placeholder="No min"
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     />
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Max SqFt
                     </label>
                     <input
@@ -324,40 +207,18 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                             updateFilter('sqftMax', value)
                         }}
                         placeholder="No max"
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     />
                 </div>
 
                 <div>
-                    <label style={{
-                        display: 'block',
-                        fontSize: '12px',
-                        fontWeight: '500',
-                        marginBottom: '4px',
-                        color: '#6D98A5'
-                    }}>
+                    <label className="block text-xs font-medium mb-1 text-blue-teal">
                         Sort By
                     </label>
                     <select
                         value={filters.sort || 'Price_High_Low'}
                         onChange={(e) => updateFilter('sort', e.target.value)}
-                        style={{
-                            width: '100%',
-                            padding: '8px 12px',
-                            border: '1px solid #91B7BE',
-                            borderRadius: '8px',
-                            fontSize: '14px',
-                            backgroundColor: 'white',
-                            color: '#333'
-                        }}
+                        className="w-full px-3 py-2 border border-teal-border rounded-lg text-sm bg-white text-gray-900 focus:outline-none focus:border-terracotta"
                     >
                         {SORT_OPTIONS.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
@@ -366,27 +227,11 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                 </div>
             </div>
 
-            <div style={{ textAlign: 'right' }}>
+            <div className="text-right">
                 <button
                     onClick={onSearch}
                     disabled={loading}
-                    style={{
-                        background: '#6D98A5',
-                        color: 'white',
-                        border: 'none',
-                        padding: '10px 20px',
-                        borderRadius: '8px',
-                        fontSize: '14px',
-                        fontWeight: '500',
-                        cursor: loading ? 'not-allowed' : 'pointer',
-                        transition: 'background-color 0.2s'
-                    }}
-                    onMouseOver={(e) => {
-                        if (!loading) e.target.style.background = '#91B7BE'
-                    }}
-                    onMouseOut={(e) => {
-                        if (!loading) e.target.style.background = '#6D98A5'
-                    }}
+                    className="bg-blue-teal text-white px-5 py-2.5 rounded-lg text-sm font-medium cursor-pointer hover:bg-teal-border transition-colors duration-200 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                     {loading ? 'Searching...' : 'Search'}
                 </button>
