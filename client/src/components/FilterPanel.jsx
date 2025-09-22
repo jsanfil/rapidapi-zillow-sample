@@ -2,11 +2,12 @@ import { useState } from 'react'
 
 const PROPERTY_TYPES = [
     { value: '', label: 'Any Type' },
-    { value: 'SINGLE_FAMILY', label: 'Single Family' },
-    { value: 'CONDO', label: 'Condo' },
-    { value: 'TOWNHOUSE', label: 'Townhouse' },
-    { value: 'MULTI_FAMILY', label: 'Multi Family' },
-    { value: 'LAND', label: 'Land' }
+    { value: 'Houses', label: 'Houses' },
+    { value: 'Townhomes', label: 'Townhomes' },
+    { value: 'Apartments_Condos_Co-ops', label: 'Apartments/Condos/Co-ops' },
+    { value: 'Multi-family', label: 'Multi-family' },
+    { value: 'LotsLand', label: 'Lots/Land' },
+    { value: 'Manufactured', label: 'Manufactured' }
 ]
 
 const BEDROOM_OPTIONS = [
@@ -73,11 +74,13 @@ const PRICE_MAX_OPTIONS = [
 ]
 
 const SORT_OPTIONS = [
-    { value: 'price_desc', label: 'Price: High to Low' },
-    { value: 'price_asc', label: 'Price: Low to High' },
-    { value: 'sqft_desc', label: 'SqFt: High to Low' },
-    { value: 'sqft_asc', label: 'SqFt: Low to High' },
-    { value: 'date_desc', label: 'Newest First' }
+    { value: 'Price_High_Low', label: 'Price: High to Low' },
+    { value: 'Price_Low_High', label: 'Price: Low to High' },
+    { value: 'Square_Feet', label: 'SqFt: High to Low' },
+    { value: 'Newest', label: 'Newest First' },
+    { value: 'Bedrooms', label: 'Bedrooms: High to Low' },
+    { value: 'Bathrooms', label: 'Bathrooms: High to Low' },
+    { value: 'Lot_Size', label: 'Lot Size: High to Low' }
 ]
 
 export default function FilterPanel({ filters, onFiltersChange, onSearch, loading }) {
@@ -197,8 +200,8 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Property Type
                     </label>
                     <select
-                        value={filters.propertyType || ''}
-                        onChange={(e) => updateFilter('propertyType', e.target.value)}
+                        value={filters.home_type || ''}
+                        onChange={(e) => updateFilter('home_type', e.target.value)}
                         style={{
                             width: '100%',
                             padding: '8px 12px',
@@ -226,8 +229,8 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Bedrooms
                     </label>
                     <select
-                        value={filters.bedrooms || ''}
-                        onChange={(e) => updateFilter('bedrooms', e.target.value)}
+                        value={filters.bedsMin || ''}
+                        onChange={(e) => updateFilter('bedsMin', e.target.value)}
                         style={{
                             width: '100%',
                             padding: '8px 12px',
@@ -255,8 +258,8 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Bathrooms
                     </label>
                     <select
-                        value={filters.bathrooms || ''}
-                        onChange={(e) => updateFilter('bathrooms', e.target.value)}
+                        value={filters.bathsMin || ''}
+                        onChange={(e) => updateFilter('bathsMin', e.target.value)}
                         style={{
                             width: '100%',
                             padding: '8px 12px',
@@ -284,9 +287,12 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Min SqFt
                     </label>
                     <input
-                        type="number"
-                        value={filters.minSqft || ''}
-                        onChange={(e) => updateFilter('minSqft', e.target.value)}
+                        type="text"
+                        value={filters.sqftMin || ''}
+                        onChange={(e) => {
+                            const value = e.target.value.replace(/[^0-9]/g, '')
+                            updateFilter('sqftMin', value)
+                        }}
                         placeholder="No min"
                         style={{
                             width: '100%',
@@ -311,9 +317,12 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Max SqFt
                     </label>
                     <input
-                        type="number"
-                        value={filters.maxSqft || ''}
-                        onChange={(e) => updateFilter('maxSqft', e.target.value)}
+                        type="text"
+                        value={filters.sqftMax || ''}
+                        onChange={(e) => {
+                            const value = e.target.value.replace(/[^0-9]/g, '')
+                            updateFilter('sqftMax', value)
+                        }}
                         placeholder="No max"
                         style={{
                             width: '100%',
@@ -338,8 +347,8 @@ export default function FilterPanel({ filters, onFiltersChange, onSearch, loadin
                         Sort By
                     </label>
                     <select
-                        value={filters.sortBy || 'price_desc'}
-                        onChange={(e) => updateFilter('sortBy', e.target.value)}
+                        value={filters.sort || 'Price_High_Low'}
+                        onChange={(e) => updateFilter('sort', e.target.value)}
                         style={{
                             width: '100%',
                             padding: '8px 12px',

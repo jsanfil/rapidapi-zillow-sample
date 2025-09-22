@@ -12,15 +12,15 @@ app.use(cors());
 
 app.get("/api/search", async (req, res) => {
   const {
-    location = "Carlsbad, CA",
+    location = "Aptos, CA",
     minPrice,
     maxPrice,
-    propertyType,
-    bedrooms,
-    bathrooms,
-    minSqft,
-    maxSqft,
-    sortBy = "price_desc"
+    home_type,
+    bedsMin,
+    bathsMin,
+    sqftMin,
+    sqftMax,
+    sort = "Price_High_Low"
   } = req.query;
 
   try {
@@ -33,20 +33,20 @@ app.get("/api/search", async (req, res) => {
     if (maxPrice) url.searchParams.set("maxPrice", String(maxPrice));
 
     // Property type filter
-    if (propertyType) url.searchParams.set("home_type", propertyType);
+    if (home_type) url.searchParams.set("home_type", home_type);
 
     // Bedroom filter (minimum bedrooms)
-    if (bedrooms) url.searchParams.set("bedsMin", String(bedrooms));
+    if (bedsMin) url.searchParams.set("bedsMin", String(bedsMin));
 
     // Bathroom filter (minimum bathrooms)
-    if (bathrooms) url.searchParams.set("bathsMin", String(bathrooms));
+    if (bathsMin) url.searchParams.set("bathsMin", String(bathsMin));
 
     // Square footage filters
-    if (minSqft) url.searchParams.set("sqftMin", String(minSqft));
-    if (maxSqft) url.searchParams.set("sqftMax", String(maxSqft));
+    if (sqftMin) url.searchParams.set("sqftMin", String(sqftMin));
+    if (sqftMax) url.searchParams.set("sqftMax", String(sqftMax));
 
     // Sort options
-    if (sortBy) url.searchParams.set("sort", sortBy);
+    if (sort) url.searchParams.set("sort", sort);
 
     console.log('Request URL:', url.toString());
 

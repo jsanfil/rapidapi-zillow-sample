@@ -8,15 +8,15 @@ export default function App() {
   const [properties, setProperties] = useState([])
   const [loading, setLoading] = useState(false)
   const [filters, setFilters] = useState({
-    location: 'Carlsbad, CA',
+    location: 'Aptos, CA',
     minPrice: '',
     maxPrice: '',
-    propertyType: '',
-    bedrooms: '',
-    bathrooms: '',
-    minSqft: '',
-    maxSqft: '',
-    sortBy: 'price_desc'
+    home_type: '',
+    bedsMin: '',
+    bathsMin: '',
+    sqftMin: '',
+    sqftMax: '',
+    sort: 'Price_High_Low'
   })
 
   async function search() {
@@ -26,20 +26,7 @@ export default function App() {
       const queryParams = new URLSearchParams()
       Object.entries(filters).forEach(([key, value]) => {
         if (value !== '' && value !== null && value !== undefined) {
-          // Map client filter names to server parameter names
-          const paramMap = {
-            location: 'location',
-            minPrice: 'minPrice',
-            maxPrice: 'maxPrice',
-            propertyType: 'propertyType',
-            bedrooms: 'bedrooms',
-            bathrooms: 'bathrooms',
-            minSqft: 'minSqft',
-            maxSqft: 'maxSqft',
-            sortBy: 'sortBy'
-          }
-          const paramName = paramMap[key] || key
-          queryParams.set(paramName, value)
+          queryParams.set(key, value)
         }
       })
 

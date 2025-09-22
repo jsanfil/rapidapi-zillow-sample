@@ -121,7 +121,7 @@ export default function PropertyCard({ property }) {
                     color: '#64748B',
                     margin: '0'
                 }}>
-                    {property.bedrooms && `${property.bedrooms} bd`} • {property.baths && `${property.baths} ba`} • {property.sqft && `${formatSqft(property.sqft)} sqft`}
+                    {property.beds && `${property.beds} bd`} • {property.baths && `${property.baths} ba`} • {property.sqft && `${formatSqft(property.sqft)} sqft`}
                 </p>
 
                 {/* Property Type */}

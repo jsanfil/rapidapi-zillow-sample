@@ -5,12 +5,12 @@ const formatFilterLabel = (key, value) => {
         location: 'Location',
         minPrice: 'Min Price',
         maxPrice: 'Max Price',
-        propertyType: 'Property Type',
-        bedrooms: 'Bedrooms',
-        bathrooms: 'Bathrooms',
-        minSqft: 'Min SqFt',
-        maxSqft: 'Max SqFt',
-        sortBy: 'Sort By'
+        home_type: 'Property Type',
+        bedsMin: 'Bedrooms',
+        bathsMin: 'Bathrooms',
+        sqftMin: 'Min SqFt',
+        sqftMax: 'Max SqFt',
+        sort: 'Sort By'
     }
 
     const label = labels[key] || key
@@ -21,29 +21,32 @@ const formatFilterLabel = (key, value) => {
     if (key === 'minPrice' || key === 'maxPrice') {
         return `${label}: $${value.toLocaleString()}`
     }
-    if (key === 'minSqft' || key === 'maxSqft') {
+    if (key === 'sqftMin' || key === 'sqftMax') {
         return `${label}: ${value} SqFt`
     }
-    if (key === 'bedrooms' || key === 'bathrooms') {
+    if (key === 'bedsMin' || key === 'bathsMin') {
         return `${label}: ${value}+`
     }
-    if (key === 'propertyType') {
+    if (key === 'home_type') {
         const typeLabels = {
-            SINGLE_FAMILY: 'Single Family',
-            CONDO: 'Condo',
-            TOWNHOUSE: 'Townhouse',
-            MULTI_FAMILY: 'Multi Family',
-            LAND: 'Land'
+            Houses: 'Houses',
+            Townhomes: 'Townhomes',
+            'Apartments_Condos_Co-ops': 'Apartments/Condos/Co-ops',
+            'Multi-family': 'Multi-family',
+            LotsLand: 'Lots/Land',
+            Manufactured: 'Manufactured'
         }
         return `${label}: ${typeLabels[value] || value}`
     }
-    if (key === 'sortBy') {
+    if (key === 'sort') {
         const sortLabels = {
-            price_desc: 'Price: High to Low',
-            price_asc: 'Price: Low to High',
-            sqft_desc: 'SqFt: High to Low',
-            sqft_asc: 'SqFt: Low to High',
-            date_desc: 'Newest First'
+            Price_High_Low: 'Price: High to Low',
+            Price_Low_High: 'Price: Low to High',
+            Square_Feet: 'SqFt: High to Low',
+            Newest: 'Newest First',
+            Bedrooms: 'Bedrooms: High to Low',
+            Bathrooms: 'Bathrooms: High to Low',
+            Lot_Size: 'Lot Size: High to Low'
         }
         return `${label}: ${sortLabels[value] || value}`
     }
