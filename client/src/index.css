@@ -1,0 +1,122 @@
+/* Global Styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: linear-gradient(135deg, #F5F5DC 0%, #FAF0E6 50%, #F0E68C 100%);
+    min-height: 100vh;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-panel {
+        padding: 16px !important;
+    }
+
+    .filter-grid {
+        grid-template-columns: 1fr !important;
+        gap: 12px !important;
+    }
+
+    .property-card {
+        flex-direction: column !important;
+        height: auto !important;
+    }
+
+    .property-image {
+        flex: 0 0 200px !important;
+        width: 100% !important;
+    }
+
+    .property-details {
+        padding: 16px !important;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .search-button {
+        width: 100% !important;
+        margin-top: 16px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-panel h2 {
+        font-size: 24px !important;
+    }
+
+    .property-details h3 {
+        font-size: 16px !important;
+    }
+
+    .property-features {
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+    }
+
+    .property-feature {
+        font-size: 13px !important;
+    }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.loading-skeleton {
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Hover Effects */
+.property-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Focus States */
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #CC7357 !important;
+    box-shadow: 0 0 0 3px rgba(204, 115, 87, 0.1) !important;
+}
+
+/* Button Hover */
+.search-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(204, 115, 87, 0.4);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F5F5DC;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #CC7357;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8B4513;
+}

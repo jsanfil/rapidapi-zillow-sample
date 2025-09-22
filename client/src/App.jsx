@@ -1,51 +1,98 @@
-import { useEffect, useState } from 'react'
-const API = 'http://localhost:4000'
-export default function App() {
-  const [items, setItems] = useState([])
-  const [q, setQ] = useState({ location: 'Carlsbad, CA', min: 2000000, max: 4000000 })
-  const [loading, setLoading] = useState(false)
+import { useState } from 'react'
+import FilterPanel from './components/FilterPanel'
+import PropertyGrid from './components/PropertyGrid'
 
-  async function load() {
+const API = 'http://localhost:4000'
+
+export default function App() {
+  const [properties, setProperties] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [filters, setFilters] = useState({
+    location: 'Carlsbad, CA',
+    minPrice: '',
+    maxPrice: '',
+    propertyType: '',
+    bedrooms: '',
+    bathrooms: '',
+    minSqft: '',
+    maxSqft: '',
+    sortBy: 'price_desc'
+  })
+
+  async function search() {
     setLoading(true)
     try {
-      const params = new URLSearchParams(q).toString()
-      const r = await fetch(`${API}/api/search?${params}`)
-      const data = await r.json()
-      setItems(data.items || [])
-    } finally { setLoading(false) }
+      // Build query parameters, filtering out empty values
+      const queryParams = new URLSearchParams()
+      Object.entries(filters).forEach(([key, value]) => {
+        if (value !== '' && value !== null && value !== undefined) {
+          // Map client filter names to server parameter names
+          const paramMap = {
+            minPrice: 'minPrice',
+            maxPrice: 'maxPrice',
+            propertyType: 'propertyType',
+            bedrooms: 'bedrooms',
+            bathrooms: 'bathrooms',
+            minSqft: 'minSqft',
+            maxSqft: 'maxSqft',
+            sortBy: 'sortBy',
+            location: 'location'
+          }
+          const paramName = paramMap[key] || key
+          queryParams.set(paramName, value)
+        }
+      })
+
+      const response = await fetch(`${API}/api/search?${queryParams.toString()}`)
+      const data = await response.json()
+      setProperties(data.items || [])
+    } catch (error) {
+      console.error('Search failed:', error)
+      setProperties([])
+    } finally {
+      setLoading(false)
+    }
   }
 
-  useEffect(() => { load() }, []) // initial
-
   return (
-    <div style={{ padding: 24, fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif' }}>
-      <h1>RapidAPI Zillow Sample</h1>
-      <div style={{ display: 'flex', gap: 8, marginBottom: 12 }}>
-        <input value={q.location} onChange={e => setQ({ ...q, location: e.target.value })} />
-        <input type="number" value={q.min} onChange={e => setQ({ ...q, min: e.target.value })} />
-        <input type="number" value={q.max} onChange={e => setQ({ ...q, max: e.target.value })} />
-        <button onClick={load}>Search</button>
+    <div style={{
+      minHeight: '100vh',
+      background: '#E4DDD7',
+      fontFamily: "'Poppins', system-ui, -apple-system, Segoe UI, Roboto, sans-serif",
+      padding: '20px'
+    }}>
+      {/* Google Fonts Link */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+
+      <div style={{
+        maxWidth: '1400px',
+        margin: '0 auto'
+      }}>
+        <h1 style={{
+          fontSize: '2rem',
+          fontWeight: '600',
+          color: '#6D98A5',
+          marginBottom: '20px',
+          letterSpacing: '-0.025em'
+        }}>
+          New Home Search
+        </h1>
+
+        <FilterPanel
+          filters={filters}
+          onFiltersChange={setFilters}
+          onSearch={search}
+          loading={loading}
+        />
+
+        <PropertyGrid
+          properties={properties}
+          loading={loading}
+        />
       </div>
-      {loading && <div>Loading…</div>}
-      <table cellPadding="8" style={{ borderCollapse: 'collapse', width: '100%' }}>
-        <thead><tr style={{ borderBottom: '1px solid #ddd' }}>
-          <th>Address</th><th>Price</th><th>Beds</th><th>Baths</th><th>SqFt</th><th>Link</th>
-        </tr></thead>
-        <tbody>
-          {items.map(x => (
-            <tr key={x.id} style={{ borderBottom: '1px solid #eee' }}>
-              <td>{[x.address, x.city, x.state].filter(Boolean).join(', ')}</td>
-              <td>{x.price ? `$${Number(x.price).toLocaleString()}` : '—'}</td>
-              <td>{x.beds ?? '—'}</td>
-              <td>{x.baths ?? '—'}</td>
-              <td>{x.sqft ? Number(x.sqft).toLocaleString() : '—'}</td>
-              <td>{x.permalink
-                    ? <a href={x.permalink} target="_blank" rel="noreferrer">Open</a>
-                    : <span>—</span>}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </div>
   )
 }
