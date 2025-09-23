@@ -2,6 +2,7 @@ import { useState } from 'react'
 import FilterPanel from './components/FilterPanel'
 import PropertyGrid from './components/PropertyGrid'
 
+
 const API = 'http://localhost:4000'
 
 export default function App() {
@@ -50,9 +51,17 @@ export default function App() {
       />
 
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl font-semibold text-blue-teal mb-5 tracking-tight">
-          Coastal Keys
-        </h1>
+
+        <header className="flex items-center gap-3 mb-5">
+          <img
+            src="/images/coastal-keys-logo.svg"
+            alt="Coastal Keys logo"
+            className="h-10 w-10"
+          />
+          <h1 className="text-3xl font-semibold text-blue-teal tracking-tight">
+            Coastal Keys
+          </h1>
+        </header>
 
         <FilterPanel
           filters={filters}
