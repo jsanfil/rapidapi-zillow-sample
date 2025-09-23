@@ -1,4 +1,4 @@
-# RapidAPI Zillow Sample
+# Coastal Keys
 
 An experimental real estate web application built with React and Node.js to demonstrate interactions with the RapidAPI Zillow API. This project serves as a learning tool for understanding how to integrate third-party real estate APIs into modern web applications.
 
